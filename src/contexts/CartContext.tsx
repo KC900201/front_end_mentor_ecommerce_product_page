@@ -79,7 +79,7 @@ export const CartProvider = ({children}: {children: ReactNode}) => {
 }
 
 export const useCart = () => {
-  const context = createContext(CartContext)
+  const context = useContext(CartContext)
 
   if (context === undefined) {
     throw new Error("useCart must be used within a CartProvider")
