@@ -1,7 +1,7 @@
 {
   "plugins": [
     "prettier-plugin-organize-imports",
-    "prettier-plugins-tailwindcss"
+    "prettier-plugin-tailwindcss"
   ],
   "tailwindStylesheet": "./src/index.css",
   "organizeImportsSkipDestructiveCodeActions": true,
