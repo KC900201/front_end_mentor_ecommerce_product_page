@@ -1,4 +1,8 @@
-import "./App.css"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { Toaster } from "sonner"
+
+import { Home, NotFound } from "@/components/pages"
 
 /**
  * To-do:
@@ -10,10 +14,20 @@ import "./App.css"
  * @returns main App component
  */
 
-function App() {
+const queryClient = new QueryClient()
 
+function App() {
   return (
-    <div className="text-3xl">Hello There (Working in Progress)</div>
+    <QueryClientProvider client={queryClient}>
+      <Toaster position="top-right" />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+          <Route />
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   )
 }
 
