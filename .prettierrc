@@ -11,5 +11,6 @@
   "semi": false,
   "singleQuote": false,
   "jsxSingleQuote": false,
-  "printWidth": 80
+  "printWidth": 80,
+  "endOfLine": "lf"
 }
