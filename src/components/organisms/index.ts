@@ -3,4 +3,4 @@ import Header from "./Header"
 import ProductDetails from "./ProductDetails"
 import ProductGallery from "./ProductGallery"
 
-export { Cart, Header, ProductGallery, ProductDetails }
+export { Cart, Header, ProductDetails, ProductGallery }

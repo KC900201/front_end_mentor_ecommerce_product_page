@@ -1,8 +1,29 @@
+import { Header } from "@/components/organisms"
+import { CartProvider } from "@/contexts/CartContext"
+
 const Home = () => {
   return (
-    <div className="flex items-center justify-center self-center text-center">
-      This is the home page
-    </div>
+    <CartProvider>
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main className="mx-auto max-w-7xl lg:px-8">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-20 lg:py-16">
+            <div className="lg:pl-8">
+              {/* <ProductGallery
+                images={product.images}
+                thumbnails={product.thumbnails}
+                productName={product.name}
+              /> */}
+              This is the main section
+            </div>
+            <div className="lg:pr-8">
+              This is product detail section
+              {/* <ProductDetails product={product} /> */}
+            </div>
+          </div>{" "}
+        </main>
+      </div>
+    </CartProvider>
   )
 }
 

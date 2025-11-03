@@ -14,40 +14,48 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
 
-export const CartProvider = ({children}: {children: ReactNode}) => {
+export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([])
 
   const addToCart = (product: Product, quantity: number) => {
-    if(quantity <= 0) {
-      toast.error("Invalid quantity", {description: "Please select a quantity greater than 0"})
+    if (quantity <= 0) {
+      toast.error("Invalid quantity", {
+        description: "Please select a quantity greater than 0",
+      })
       return
     }
 
     setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.product.id === product.id)
+      const existingItem = prevCart.find(
+        (item) => item.product.id === product.id
+      )
 
-      if(existingItem) {
+      if (existingItem) {
         toast.success("Cart updated", {
           description: `Quantity updated to ${existingItem.quantity + quantity}`,
         })
 
         return prevCart.map((item) =>
-          item.product.id === product.id ?
-          {...item, quantity: item.quantity + quantity}
-          : item
+          item.product.id === product.id
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
         )
       }
 
-      toast.success("Added to cart", {description: `${product.name} has been added to your cart`})
+      toast.success("Added to cart", {
+        description: `${product.name} has been added to your cart`,
+      })
 
-      return [...prevCart, {product, quantity}]
+      return [...prevCart, { product, quantity }]
     })
   }
 
   const removeFromCart = (productId: string) => {
-    setCart((prevCart) => prevCart.filter((item) => item.product.id !== productId))
+    setCart((prevCart) =>
+      prevCart.filter((item) => item.product.id !== productId)
+    )
     toast.success("Removed from cart", {
-      description: "Item has been removed from your cart"
+      description: "Item has been removed from your cart",
     })
   }
 
@@ -56,7 +64,10 @@ export const CartProvider = ({children}: {children: ReactNode}) => {
   }
 
   const getCartTotal = () => {
-    return cart.reduce((total, item) => total + item.product.price * item.quantity, 0)
+    return cart.reduce(
+      (total, item) => total + item.product.price * item.quantity,
+      0
+    )
   }
 
   const getCartItemCount = () => {
@@ -71,9 +82,10 @@ export const CartProvider = ({children}: {children: ReactNode}) => {
         removeFromCart,
         clearCart,
         getCartTotal,
-        getCartItemCount
-      }}>
-        {children}
+        getCartItemCount,
+      }}
+    >
+      {children}
     </CartContext.Provider>
   )
 }
