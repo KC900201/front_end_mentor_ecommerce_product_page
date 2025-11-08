@@ -22,9 +22,11 @@ const ChevronButton = ({
       onPress={onHandleButton}
     >
       {!isRight ? (
-        <ChevronLeft className={`${isMobile ? "h-5 w-5" : "h-6 w-6"}`} />
+        <ChevronLeft className={`m-auto ${isMobile ? "h-5 w-5" : "h-6 w-6"}`} />
       ) : (
-        <ChevronRight className={`${isMobile ? "h-5 w-5" : "h-6 w-6"}`} />
+        <ChevronRight
+          className={`m-auto ${isMobile ? "h-5 w-5" : "h-6 w-6"}`}
+        />
       )}
     </Button>
   )

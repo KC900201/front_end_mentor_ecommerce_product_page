@@ -1,7 +1,10 @@
-import { Header } from "@/components/organisms"
+import { Header, ProductGallery } from "@/components/organisms"
 import { CartProvider } from "@/contexts/CartContext"
+import { products } from "@/data/products"
 
 const Home = () => {
+  const product = products[0]
+
   return (
     <CartProvider>
       <div className="min-h-screen bg-background">
@@ -9,12 +12,11 @@ const Home = () => {
         <main className="mx-auto max-w-7xl lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-20 lg:py-16">
             <div className="lg:pl-8">
-              {/* <ProductGallery
+              <ProductGallery
                 images={product.images}
                 thumbnails={product.thumbnails}
                 productName={product.name}
-              /> */}
-              This is the main section
+              />
             </div>
             <div className="lg:pr-8">
               This is product detail section
