@@ -1,4 +1,4 @@
-import { Button, Chip } from "@heroui/react"
+import { Button } from "@heroui/react"
 import { motion } from "framer-motion"
 import { useState } from "react"
 
