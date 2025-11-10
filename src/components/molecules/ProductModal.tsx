@@ -16,7 +16,7 @@ interface ProductModalProps {
 }
 
 /**
- * @param param0
+ * @param isOpen, thumbnails, imageKey, imageSource, productName, setSelectedImage, onCloseModal, onHandlePrevious, onHandleNext
  * @returns Product Modal (too many props drilling)
  */
 
