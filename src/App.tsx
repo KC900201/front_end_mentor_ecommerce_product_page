@@ -6,9 +6,11 @@ import { Home, NotFound } from "@/components/pages"
 
 /**
  * To-do:
- * [ ] Create UI components with unit test scripts
- * [ ] Include ContextProvider (CartProvider)
- * [ ] Include hooks for responsive layout
+ * [x] Create UI components with unit test scripts
+ *  [ ] Finish writing test scripts
+ *  [ ] Resolve UI issues: ProductModal, MobileNavigation
+ * [x] Include ContextProvider (CartProvider)
+ * [x] Include hooks for responsive layout
  * [ ] Publish to netlify
  *
  * @returns main App component
