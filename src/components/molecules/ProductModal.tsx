@@ -34,15 +34,32 @@ const ProductModal = ({
   return (
     <Modal
       isOpen={isOpen}
-      onClose={onCloseModal}
+      onOpenChange={(open) => {
+        if (!open) onCloseModal()
+      }}
       size="2xl"
       backdrop="blur"
+      isDismissable={true}
+      hideCloseButton={true}
+      motionProps={{
+        variants: {
+          enter: {
+            opacity: 1,
+            scale: 1,
+          },
+          exit: {
+            opacity: 0,
+            scale: 0.95,
+          },
+        },
+      }}
       classNames={{
-        wrapper: "items-center justify-center",
-        backdrop: "bg-black/75",
+        wrapper: "items-center justify-center z-[9999]",
+        backdrop: "bg-black/75 z-[9998]",
+        base: "bg-transparent shadow-none",
       }}
     >
-      <ModalContent className="bg-transparent shadow-none">
+      <ModalContent>
         {(onClose) => (
           <div className="relative m-auto w-full max-w-[550px]">
             <Button
