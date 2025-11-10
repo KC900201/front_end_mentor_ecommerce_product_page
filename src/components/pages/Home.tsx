@@ -21,7 +21,7 @@ const Home = () => {
             <div className="lg:pr-8">
               <ProductDetails product={product} />
             </div>
-          </div>{" "}
+          </div>
         </main>
       </div>
     </CartProvider>
