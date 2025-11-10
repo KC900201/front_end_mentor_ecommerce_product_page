@@ -1,4 +1,4 @@
-import { Header, ProductGallery } from "@/components/organisms"
+import { Header, ProductDetails, ProductGallery } from "@/components/organisms"
 import { CartProvider } from "@/contexts/CartContext"
 import { products } from "@/data/products"
 
@@ -19,8 +19,7 @@ const Home = () => {
               />
             </div>
             <div className="lg:pr-8">
-              This is product detail section
-              {/* <ProductDetails product={product} /> */}
+              <ProductDetails product={product} />
             </div>
           </div>{" "}
         </main>
