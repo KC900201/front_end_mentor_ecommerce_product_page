@@ -16,7 +16,7 @@ interface DesktopGalleryProps {
   imageSource: string
   thumbnails: string[]
   productName: string
-  setLightBoxOpen: (isOpen: boolean) => void
+  setLightBoxOpen: () => void
   setSelectedImage: (index: number) => void
 }
 
@@ -32,7 +32,7 @@ const DesktopGallery = ({
     <section className="hidden lg:block">
       <motion.button
         className="group relative mb-8 w-full cursor-pointer overflow-hidden rounded-2xl"
-        onClick={() => setLightBoxOpen(true)}
+        onClick={setLightBoxOpen}
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.2 }}
       >

@@ -10,13 +10,13 @@ interface ProductModalProps {
   imageSource: string
   productName: string
   setSelectedImage: (index: number) => void
-  onCloseModal: () => void
+  onOpenChange: (open: boolean) => void
   onHandlePrevious: () => void
   onHandleNext: () => void
 }
 
 /**
- * @param isOpen, thumbnails, imageKey, imageSource, productName, setSelectedImage, onCloseModal, onHandlePrevious, onHandleNext
+ * @param isOpen, thumbnails, imageKey, imageSource, productName, setSelectedImage, onOpenChange, onHandlePrevious, onHandleNext
  * @returns Product Modal (too many props drilling)
  */
 
@@ -27,83 +27,67 @@ const ProductModal = ({
   productName,
   thumbnails,
   setSelectedImage,
-  onCloseModal,
+  onOpenChange,
   onHandleNext,
   onHandlePrevious,
 }: ProductModalProps) => {
   return (
     <Modal
       isOpen={isOpen}
-      onOpenChange={(open) => {
-        if (!open) onCloseModal()
-      }}
+      onOpenChange={onOpenChange}
       size="2xl"
-      backdrop="blur"
-      isDismissable={true}
+      isDismissable
       hideCloseButton={true}
-      motionProps={{
-        variants: {
-          enter: {
-            opacity: 1,
-            scale: 1,
-          },
-          exit: {
-            opacity: 0,
-            scale: 0.95,
-          },
-        },
-      }}
+      placement="center"
+      scrollBehavior="outside"
       classNames={{
-        wrapper: "items-center justify-center z-[9999]",
-        backdrop: "bg-black/75 z-[9998]",
-        base: "bg-transparent shadow-none",
+        wrapper:
+          "bg-black/90 backdrop-blur-lg items-center justify-center !flex !fixed !inset-0 !h-full !w-full",
       }}
     >
-      <ModalContent>
-        {(onClose) => (
-          <div className="relative m-auto w-full max-w-[550px]">
-            <Button
-              isIconOnly
-              variant="light"
-              className="absolute -top-12 right-0 z-50 h-8 w-8 text-white hover:text-primary"
-              onPress={onClose}
-            >
-              <X className="h-8 w-8" />
-            </Button>
-            {/* Image carousel */}
-            <div className="relative overflow-visible rounded-2xl">
-              <div className="relative z-0 overflow-hidden rounded-2xl">
-                <ProductImage
-                  imageKey={imageKey}
-                  imageSource={imageSource}
-                  productName={productName}
-                  className="h-[550px] w-full object-cover"
-                />
-              </div>
-              <ChevronButton
-                onHandleButton={onHandlePrevious}
-                className="absolute top-1/2 left-0 z-50 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white hover:bg-white"
-              />
-              <ChevronButton
-                isRight
-                onHandleButton={onHandleNext}
-                className="absolute top-1/2 right-0 z-50 h-14 w-14 translate-x-1/2 -translate-y-1/2 rounded-full bg-white hover:bg-white"
+      <ModalContent className="mx-auto! my-0!">
+        <div className="relative m-auto w-full max-w-[550px]">
+          <Button
+            isIconOnly
+            variant="light"
+            className="absolute -top-12 right-0 z-50 h-8 w-8 text-white hover:text-primary"
+            onPress={() => onOpenChange(false)}
+          >
+            <X className="h-8 w-8" />
+          </Button>
+          {/* Image carousel */}
+          <div className="relative overflow-visible rounded-2xl">
+            <div className="relative z-0 overflow-hidden rounded-2xl">
+              <ProductImage
+                imageKey={imageKey}
+                imageSource={imageSource}
+                productName={productName}
+                className="h-[550px] w-full object-cover"
               />
             </div>
-            <div className="mt-8 grid grid-cols-4 gap-8 px-4">
-              {thumbnails.map((thumb, index) => (
-                <ThumbnailImage
-                  key={`thumbnail-model-${index}`}
-                  index={index}
-                  imageSource={thumb}
-                  isImageSelected={imageKey === index}
-                  productName={productName}
-                  setSelectedImage={setSelectedImage}
-                />
-              ))}
-            </div>
+            <ChevronButton
+              onHandleButton={onHandlePrevious}
+              className="absolute top-1/2 left-0 z-50 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white hover:bg-white"
+            />
+            <ChevronButton
+              isRight
+              onHandleButton={onHandleNext}
+              className="absolute top-1/2 right-0 z-50 h-14 w-14 translate-x-1/2 -translate-y-1/2 rounded-full bg-white hover:bg-white"
+            />
           </div>
-        )}
+          <div className="mt-8 grid grid-cols-4 gap-8 px-4">
+            {thumbnails.map((thumb, index) => (
+              <ThumbnailImage
+                key={`thumbnail-model-${index}`}
+                index={index}
+                imageSource={thumb}
+                isImageSelected={imageKey === index}
+                productName={productName}
+                setSelectedImage={setSelectedImage}
+              />
+            ))}
+          </div>
+        </div>
       </ModalContent>
     </Modal>
   )

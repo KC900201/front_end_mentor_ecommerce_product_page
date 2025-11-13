@@ -1,9 +1,11 @@
+import { useDisclosure } from "@heroui/react"
+import { useState } from "react"
+
 import {
   DesktopGallery,
   MobileGallery,
   ProductModal,
 } from "@/components/molecules"
-import { useState } from "react"
 
 interface ProductGalleryProps {
   images: string[]
@@ -22,7 +24,7 @@ const ProductGallery = ({
   productName,
 }: ProductGalleryProps) => {
   const [selectedImage, setSelectedImage] = useState(0)
-  const [isLightBoxOpen, setLightBoxOpen] = useState(false)
+  const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
   const handlePrevious = () => {
     setSelectedImage((prev) => (prev <= 0 ? images.length - 1 : prev - 1))
@@ -46,17 +48,18 @@ const ProductGallery = ({
         imageSource={images[selectedImage]}
         thumbnails={thumbnails}
         productName={productName}
-        setLightBoxOpen={setLightBoxOpen}
+        setLightBoxOpen={onOpen}
         setSelectedImage={setSelectedImage}
       />
+
       {/* Image modal (upon clicking image from desktop) - Rendered outside container */}
       <ProductModal
-        isOpen={isLightBoxOpen}
+        isOpen={isOpen}
         imageKey={selectedImage}
         imageSource={images[selectedImage]}
         thumbnails={thumbnails}
         productName={productName}
-        onCloseModal={() => setLightBoxOpen(false)}
+        onOpenChange={onOpenChange}
         setSelectedImage={setSelectedImage}
         onHandleNext={handleNext}
         onHandlePrevious={handlePrevious}
