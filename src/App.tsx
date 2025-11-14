@@ -10,7 +10,7 @@ import { Home, NotFound } from "@/components/pages"
  *  [ ] Finish writing test scripts
  *  [x] Resolve UI issues:
  *    [x] Product Modal
- *    [ ] Mobile Navigation Bar
+ *    [x] Mobile Navigation Bar
  * [ ] Publish to netlify
  *
  * @returns main App component
