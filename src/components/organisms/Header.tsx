@@ -22,8 +22,7 @@ import { navigation } from "@/data/navigations"
 
 /**
  * Issue:
- *  [ ] NavbarMenuToggle doesn't trigger mobile  - https://github.com/heroui-inc/heroui/issues/4345, https://github.com/heroui-inc/heroui/issues/4393, https://github.com/tailwindlabs/tailwindcss/discussions/16369
- *  [ ] Hamburger icon doesn't display
+ *  [x] NavbarMenuToggle doesn't trigger mobile  - https://github.com/heroui-inc/heroui/issues/4345, https://github.com/heroui-inc/heroui/issues/4393, https://github.com/tailwindlabs/tailwindcss/discussions/16369
  *
  * @returns a header component with cart button and navigation bar
  */
