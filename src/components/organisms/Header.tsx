@@ -35,14 +35,13 @@ const Header = () => {
 
   return (
     <Navbar
-      isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="xl"
       className="border-b border-border pl-3 lg:p-2"
       height={"5rem"}
     >
       {/* Mobile navbar toggler */}
-      <NavbarContent>
+      <NavbarContent justify="start">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="lg:hidden"

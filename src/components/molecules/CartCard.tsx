@@ -7,7 +7,10 @@ const CartCard = () => {
   const { cart, removeFromCart } = useCart()
 
   return (
-    <Card shadow="none" className="border-none">
+    <Card
+      className="rounded-b-sm border-none bg-white shadow-xs lg:border-border lg:shadow-lg"
+      shadow="none"
+    >
       <CardHeader className="border-b border-border p-4">
         <h3 className="font-bold text-foreground">Cart</h3>
       </CardHeader>
