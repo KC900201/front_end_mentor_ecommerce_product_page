@@ -72,9 +72,10 @@ const Header = () => {
             >
               {cartCount > 0 ? (
                 <Badge
-                  content={cartCount.toString()}
-                  color="warning"
                   placement="top-right"
+                  size="sm"
+                  content={cartCount.toString()}
+                  className="mt-0.5 inline-flex shrink-0 border-accent bg-accent pl-1 text-xs text-white"
                 >
                   <ShoppingCart className="h-6 w-6" />
                 </Badge>
