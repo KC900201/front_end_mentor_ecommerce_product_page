@@ -31,6 +31,7 @@ const ThumbnailImage = ({
       />
       {isImageSelected && (
         <motion.div
+          data-testid="thumbnail-div"
           className="pointer-events-none absolute inset-0 bg-white/75"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
