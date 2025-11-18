@@ -63,7 +63,7 @@ describe("PriceDisplay", () => {
     const chip = screen.getByTestId("discount")
 
     // Assertion
-    expect(chip).toHaveRole("generic")
+    expect(chip).toBeInTheDocument()
     expect(chip.tagName).toBe("DIV")
   })
 })

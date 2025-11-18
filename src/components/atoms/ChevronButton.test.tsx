@@ -8,9 +8,7 @@ afterEach(() => {
 })
 
 describe("ChevronButton", () => {
-  const mockClick = vi.fn(() => {
-    return "button clicked"
-  })
+  const mockClick = vi.fn()
 
   it("renders the component by default is left", () => {
     render(<ChevronButton onHandleButton={mockClick} />)
@@ -55,7 +53,6 @@ describe("ChevronButton", () => {
     // Check mock function is called
     mockButton.click()
     expect(mockClick).toHaveBeenCalledTimes(1)
-    expect(mockClick).toHaveReturnedWith("button clicked")
   })
 
   it("renders the component if adding additional styling", () => {

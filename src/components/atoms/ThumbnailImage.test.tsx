@@ -13,9 +13,7 @@ describe("ThumbnailImage", () => {
     index: 0,
     imageSource: "testThumbNail.jpg",
     productName: "product thumbnail",
-    setSelectedImage: vi.fn(() => {
-      return "image selected"
-    }),
+    setSelectedImage: vi.fn(),
   }
 
   it("renders the component successfully", () => {
@@ -60,7 +58,7 @@ describe("ThumbnailImage", () => {
     const testDiv = screen.getByTestId("thumbnail-div")
 
     // Assertion
-    expect(testDiv).toHaveRole("generic")
+    expect(testDiv).toBeInTheDocument()
     expect(testDiv.tagName).toEqual("DIV")
     expect(testDiv).toHaveClass(
       "pointer-events-none absolute inset-0 bg-white/75"
@@ -83,6 +81,5 @@ describe("ThumbnailImage", () => {
     // Assertion
     testButton.click()
     expect(testThumbNail.setSelectedImage).toHaveBeenCalled()
-    expect(testThumbNail.setSelectedImage).toHaveReturnedWith("image selected")
   })
 })

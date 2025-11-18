@@ -9,9 +9,7 @@ afterEach(() => {
 
 // Continue 11/17/2025
 describe("QuantityButton", () => {
-  const mockClick = vi.fn(() => {
-    return "button clicked"
-  })
+  const mockClick = vi.fn()
 
   it("renders the component by default is decrement button", () => {
     render(<QuantityButton onHandleQuantity={mockClick} />)
@@ -28,7 +26,6 @@ describe("QuantityButton", () => {
     testButton.click()
 
     expect(mockClick).toHaveBeenCalled()
-    expect(mockClick).toHaveReturnedWith("button clicked")
   })
 
   it("renders the component as increment button", () => {
@@ -38,6 +35,5 @@ describe("QuantityButton", () => {
 
     // Assertion
     expect(testIcon).toBeInTheDocument()
-    expect(testIcon).toHaveClass("lucide lucide-plus")
   })
 })

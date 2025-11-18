@@ -75,7 +75,7 @@ const Header = () => {
                   placement="top-right"
                   size="sm"
                   content={cartCount.toString()}
-                  className="m-auto inline-flex shrink-0 border-accent bg-accent pl-0.5 text-xs text-white"
+                  className="m-auto inline-flex shrink-0 self-auto border-accent bg-accent pl-0.5 text-xs text-white"
                 >
                   <ShoppingCart className="h-6 w-6" />
                 </Badge>
