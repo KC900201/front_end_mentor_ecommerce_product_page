@@ -3,7 +3,6 @@ import { describe, expect, it } from "vitest"
 
 import CheckOutButton from "./CheckOutButton"
 
-// Continue (11/15/2025)
 describe("CheckOutButton", () => {
   it("renders the button component", () => {
     render(<CheckOutButton />)
