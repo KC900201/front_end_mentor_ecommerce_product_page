@@ -48,7 +48,7 @@ const CartCard = () => {
                   </div>
                   {/* Remove from cart button */}
                   <CartButton
-                    removeFromCart={() => removeFromCart(item.product.id)}
+                    onHandleClick={() => removeFromCart(item.product.id)}
                   />
                 </div>
               ))}
