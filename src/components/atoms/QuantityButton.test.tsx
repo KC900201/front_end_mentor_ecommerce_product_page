@@ -7,7 +7,6 @@ afterEach(() => {
   vi.clearAllMocks()
 })
 
-// Continue 11/17/2025
 describe("QuantityButton", () => {
   const mockClick = vi.fn()
 
