@@ -25,6 +25,18 @@ describe("CartCard", () => {
     thumbnails: ["/thumb1.jpg"],
   }
 
+  const mockProduct2: Product = {
+    id: "2",
+    company: "Sandals Company",
+    name: "Fall Limited Edition Sandals",
+    description: "Sandals",
+    price: 50.0,
+    originalPrice: 75.0,
+    discount: 25,
+    images: ["/sandals.jpg"],
+    thumbnails: ["/thumb2.jpg"],
+  }
+
   const mockRemoveFromCart = vi.fn()
 
   beforeEach(() => {
@@ -125,11 +137,39 @@ describe("CartCard", () => {
     })
   })
 
-  // Continue 11/21/2025
   describe("Remove Item Functionality", () => {
-    it("calls removeFromCart when cart button is clicked", async () => {})
+    it("calls removeFromCart when cart button is clicked", async () => {
+      const user = userEvent.setup()
+      const cartItem: CartItem = { product: mockProduct, quantity: 2 }
+      renderWithCart([cartItem])
 
-    it("calls removeFromCart with correct product id for multiple items", async () => {})
+      const removeButton = screen.getByTestId("cart-button")
+      await user.click(removeButton)
+
+      expect(mockRemoveFromCart).toHaveBeenCalled()
+      expect(mockRemoveFromCart).toHaveBeenCalledWith(mockProduct.id)
+    })
+
+    it("calls removeFromCart with correct product id for multiple items", async () => {
+      const user = userEvent.setup()
+      const cartItems: CartItem[] = [
+        { product: mockProduct, quantity: 2 },
+        { product: mockProduct2, quantity: 2 },
+      ]
+      renderWithCart(cartItems)
+
+      const removeButtons = screen.getAllByTestId("cart-button")
+
+      // Click first remove button
+      await user.click(removeButtons[0])
+      expect(mockRemoveFromCart).toHaveBeenCalledWith(mockProduct.id)
+
+      // Click second remove button
+      await user.click(removeButtons[1])
+      expect(mockRemoveFromCart).toHaveBeenCalledWith(mockProduct2.id)
+
+      expect(mockRemoveFromCart).toHaveBeenCalledTimes(2)
+    })
   })
 
   describe("Card Styling", () => {
