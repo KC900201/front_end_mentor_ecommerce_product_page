@@ -45,9 +45,8 @@ describe("DesktopGallery", () => {
     vi.clearAllMocks()
   })
 
-  // Continue 11/22/2025
   describe("Positive Test Cases", () => {
-    it("renders the the main image with correct src and alt text", () => {
+    it("renders the main image with correct src and alt text", () => {
       render(<DesktopGallery {...mockProps} />)
 
       // Assertion - alt text is constructed
