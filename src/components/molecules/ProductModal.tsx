@@ -2,35 +2,29 @@ import { Button, Modal, ModalContent } from "@heroui/react"
 import { X } from "lucide-react"
 
 import { ChevronButton, ProductImage, ThumbnailImage } from "@/components/atoms"
+import { useGallery } from "@/contexts/GalleryContext"
 
 interface ProductModalProps {
-  isOpen: boolean
   thumbnails: string[]
-  imageKey: number
-  imageSource: string
   productName: string
-  setSelectedImage: (index: number) => void
-  onOpenChange: (open: boolean) => void
-  onHandlePrevious: () => void
-  onHandleNext: () => void
 }
 
 /**
- * @param isOpen, thumbnails, imageKey, imageSource, productName, setSelectedImage, onOpenChange, onHandlePrevious, onHandleNext
+ * @param images, thumbnails, imageSource, productName, setSelectedImage, onOpenChange, onHandlePrevious, onHandleNext
  * @returns Product Modal (too many props drilling)
  */
 
-const ProductModal = ({
-  isOpen,
-  imageKey,
-  imageSource,
-  productName,
-  thumbnails,
-  setSelectedImage,
-  onOpenChange,
-  onHandleNext,
-  onHandlePrevious,
-}: ProductModalProps) => {
+const ProductModal = ({ productName, thumbnails }: ProductModalProps) => {
+  const {
+    selectedImage,
+    imageSource,
+    setSelectedImage,
+    isOpen,
+    onOpenChange,
+    handleNextImage,
+    handlePreviousImage,
+  } = useGallery()
+
   return (
     <Modal
       isOpen={isOpen}
@@ -59,19 +53,19 @@ const ProductModal = ({
           <div className="relative overflow-visible rounded-2xl">
             <div className="relative z-0 overflow-hidden rounded-2xl">
               <ProductImage
-                imageKey={imageKey}
+                imageKey={selectedImage}
                 imageSource={imageSource}
                 productName={productName}
                 className="h-[550px] w-full object-cover"
               />
             </div>
             <ChevronButton
-              onHandleButton={onHandlePrevious}
+              onHandleButton={handlePreviousImage}
               className="absolute top-1/2 left-0 z-50 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white hover:bg-white"
             />
             <ChevronButton
               isRight
-              onHandleButton={onHandleNext}
+              onHandleButton={handleNextImage}
               className="absolute top-1/2 right-0 z-50 h-14 w-14 translate-x-1/2 -translate-y-1/2 rounded-full bg-white hover:bg-white"
             />
           </div>
@@ -81,7 +75,7 @@ const ProductModal = ({
                 key={`thumbnail-model-${index}`}
                 index={index}
                 imageSource={thumb}
-                isImageSelected={imageKey === index}
+                isImageSelected={selectedImage === index}
                 productName={productName}
                 setSelectedImage={setSelectedImage}
               />
