@@ -4,9 +4,7 @@ import { ThumbnailImage } from "@/components/atoms"
 
 /**
  * To-do:
- * [x] Complete the button components
- * [x] Complete the image modal (upon clicking)
- *  [ ] Refactor the component to amend props drilling
+ * [ ] Refactor the component to amend props drilling
  *
  * @returns a web layout product gallery, with image modal
  */
