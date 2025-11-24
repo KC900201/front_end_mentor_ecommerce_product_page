@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
-import { CartProvider, useCart } from "@/contexts/CartContext"
+import { useCart } from "@/contexts/CartContext"
 import type { CartItem, Product } from "@/types/product"
 
 import CartCard from "./CartCard"
@@ -11,7 +11,6 @@ vi.mock("@/contexts/CartContext", async () => ({
   useCart: vi.fn(),
 }))
 
-// Continue (11/18/2025)
 describe("CartCard", () => {
   const mockProduct: Product = {
     id: "1",
