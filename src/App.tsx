@@ -7,11 +7,8 @@ import { Home, NotFound } from "@/components/pages"
 /**
  * To-do:
  * [x] Create UI components with unit test scripts
- *  [ ] Finish writing test scripts
- *  [x] Resolve UI issues:
- *    [x] Product Modal
- *    [x] Mobile Navigation Bar
- * [ ] Publish to netlify
+ *  [x] Finish writing test scripts
+ * [x] Publish to netlify
  *
  * @returns main App component
  */
