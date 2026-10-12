@@ -5,6 +5,11 @@ import DesktopGallery from "./DesktopGallery"
 
 // Mock ThumbnailImage component to isolate Desktop Gallery testing
 
+/**
+ * To-do:
+ * [ ] Refactor test cases to match new GalleryContext wrapping
+ */
+
 vi.mock("@/components/atoms", () => ({
   ThumbnailImage: ({
     index,

@@ -1,25 +1,19 @@
 import { ChevronButton, ProductImage } from "@/components/atoms"
+import { useGallery } from "@/contexts/GalleryContext"
 
 interface MobileGalleryProps {
-  imageKey: number
-  imageSource: string
   productName: string
-  onHandlePrevious: () => void
-  onHandleNext: () => void
 }
 
-const MobileGallery = ({
-  imageKey,
-  imageSource,
-  productName,
-  onHandlePrevious,
-  onHandleNext,
-}: MobileGalleryProps) => {
+const MobileGallery = ({ productName }: MobileGalleryProps) => {
+  const { selectedImage, imageSource, handlePreviousImage, handleNextImage } =
+    useGallery()
+
   return (
     <section className="relative lg:hidden">
       <div className="relative aspect-square">
         <ProductImage
-          imageKey={imageKey}
+          imageKey={selectedImage}
           imageSource={imageSource}
           productName={productName}
           className="h-full w-full object-cover"
@@ -27,13 +21,13 @@ const MobileGallery = ({
         {/* directional buttons - left, right */}
         <ChevronButton
           isMobile
-          onHandleButton={onHandlePrevious}
+          onHandleButton={handlePreviousImage}
           className="absolute top-1/2 left-4 h-10 w-10 -translate-y-1/2 rounded-full bg-background"
         />
         <ChevronButton
           isMobile
           isRight
-          onHandleButton={onHandleNext}
+          onHandleButton={handleNextImage}
           className="absolute top-1/2 right-4 h-10 w-10 -translate-y-1/2 rounded-full bg-background"
         />
       </div>
